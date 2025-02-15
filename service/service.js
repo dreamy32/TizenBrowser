@@ -14,8 +14,8 @@ app.use(cors(corsOptions));
 
 const PORT = 8085;
 const apps = {
-    "YouTube": {
-        name: "YouTube",
+    "Browser": {
+        name: "Browser",
         state: "stopped",
         allowStop: true,
         pid: null,
@@ -29,15 +29,9 @@ const apps = {
                     null,
                     null,
                     [
-                        new tizen.ApplicationControlData("module", [JSON.stringify(
-                            {
-                                moduleName: '@foxreis/tizentube',
-                                moduleType: 'npm',
-                                args: launchData
-                            }
-                        )])
+                        new tizen.ApplicationControlData("URL", [launchData])
                     ]
-                ), `${tbPackageId}.TizenBrewStandalone`);
+                ), "org.tizen.browser");
         }
     }
 };
